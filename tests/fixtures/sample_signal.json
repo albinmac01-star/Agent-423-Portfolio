@@ -1,0 +1,19 @@
+{
+  "signal_id": "fixture-signal-001",
+  "timestamp_utc": "2026-04-25T07:17:31.139218Z",
+  "workflow_id": "replay-test",
+  "asset": "XAUUSD",
+  "session": "London",
+  "direction_bias": "BUY",
+  "catalyst_type": "Soft USD CPI release below forecast \u2014 broad USD selling",
+  "impact_score": 4.2,
+  "trend_1h": "bullish",
+  "trend_1d": "bullish",
+  "volatility_regime": "elevated",
+  "confidence": 0.74,
+  "execution_window_sec": 259200,
+  "invalidate_if_spread_above": 35,
+  "investigator_notes": "Multiple Tier-1 sources confirm broad USD selling. Gold bid confirmed on spot market.",
+  "reasoning_summary": "Macro catalyst aligned with 1D and 1H bullish trend during London session with elevated volatility.",
+  "status": "pending"
+}

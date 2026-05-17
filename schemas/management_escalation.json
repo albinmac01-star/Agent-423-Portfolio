@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ManagementEscalation",
+  "description": "Compact payload sent to Claude only when a rule-based warning fires during active management. Avoids polling Claude on every candle.",
+  "type": "object",
+  "required": ["event", "asset", "session", "trade_state"],
+  "properties": {
+    "event": {
+      "type": "string",
+      "enum": [
+        "MOMENTUM_DECAY",
+        "SPREAD_SPIKE",
+        "SESSION_ENDING",
+        "ADVERSE_MOVE",
+        "TARGET_APPROACHING"
+      ]
+    },
+    "asset":                { "type": "string" },
+    "session":              { "type": "string" },
+    "adx_now":              { "type": "number" },
+    "adx_threshold":        { "type": "number" },
+    "bars_below_threshold": { "type": "integer" },
+    "spread_now":           { "type": "number" },
+    "unrealized_r":         { "type": "number", "description": "Current unrealized PnL in R-multiples" },
+    "trade_state":          { "type": "string" }
+  },
+  "additionalProperties": false
+}

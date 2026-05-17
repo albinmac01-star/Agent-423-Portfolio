@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TradeSignal",
+  "description": "Canonical signal payload written to queue by Agent 3 (n8n). Consumed by local executor.",
+  "type": "object",
+  "required": [
+    "signal_id",
+    "timestamp_utc",
+    "workflow_id",
+    "asset",
+    "session",
+    "direction_bias",
+    "catalyst_type",
+    "impact_score",
+    "trend_1h",
+    "trend_1d",
+    "volatility_regime",
+    "confidence",
+    "execution_window_sec",
+    "invalidate_if_spread_above",
+    "reasoning_summary",
+    "status"
+  ],
+  "properties": {
+    "signal_id":                  { "type": "string", "description": "UUID v4" },
+    "timestamp_utc":              { "type": "string", "format": "date-time" },
+    "workflow_id":                { "type": "string", "description": "n8n workflow execution ID" },
+    "asset":                      { "type": "string", "examples": ["XAUUSD", "NAS100", "EURUSD"] },
+    "session":                    { "type": "string", "enum": ["Sydney", "Tokyo", "London", "NewYork"] },
+    "direction_bias":             { "type": "string", "enum": ["BUY", "SELL"] },
+    "catalyst_type":              { "type": "string" },
+    "impact_score":               { "type": "number", "minimum": 0, "maximum": 5 },
+    "trend_1h":                   { "type": "string", "enum": ["bullish", "bearish", "ranging"] },
+    "trend_1d":                   { "type": "string", "enum": ["bullish", "bearish", "ranging"] },
+    "volatility_regime":          { "type": "string", "enum": ["low", "normal", "elevated", "extreme"] },
+    "confidence":                 { "type": "number", "minimum": 0, "maximum": 1 },
+    "execution_window_sec":       { "type": "integer", "minimum": 30, "maximum": 1800 },
+    "invalidate_if_spread_above": { "type": "number", "minimum": 0 },
+    "investigator_notes":         { "type": "string", "default": "" },
+    "reasoning_summary":          { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "claimed", "executed", "failed", "expired"],
+      "default": "pending"
+    }
+  },
+  "additionalProperties": false
+}

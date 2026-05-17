@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ClaudeDecisionRequest",
+  "description": "Compact structured payload sent to Claude. Contains only what it needs. Never includes lot size or broker parameters.",
+  "type": "object",
+  "required": [
+    "session", "asset", "catalyst", "direction_bias",
+    "trend_1h", "trend_1d", "volatility_regime",
+    "spread_now", "max_allowed_spread",
+    "open_positions_count", "daily_drawdown_pct",
+    "impact_score", "confidence"
+  ],
+  "properties": {
+    "session":               { "type": "string" },
+    "asset":                 { "type": "string" },
+    "catalyst":              { "type": "string" },
+    "direction_bias":        { "type": "string", "enum": ["BUY", "SELL"] },
+    "trend_1h":              { "type": "string", "enum": ["bullish", "bearish", "ranging"] },
+    "trend_1d":              { "type": "string", "enum": ["bullish", "bearish", "ranging"] },
+    "volatility_regime":     { "type": "string", "enum": ["low", "normal", "elevated", "extreme"] },
+    "spread_now":            { "type": "number" },
+    "max_allowed_spread":    { "type": "number" },
+    "open_positions_count":  { "type": "integer" },
+    "daily_drawdown_pct":    { "type": "number" },
+    "impact_score":          { "type": "number" },
+    "confidence":            { "type": "number" },
+    "investigator_notes":    { "type": "string", "default": "" },
+    "exception_rules":       { "type": "array", "items": { "type": "string" }, "default": [] }
+  },
+  "additionalProperties": false
+}

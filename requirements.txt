@@ -1,0 +1,12 @@
+anthropic>=0.25.0
+python-dotenv>=1.0.0
+jsonschema>=4.21.0
+google-auth>=2.29.0
+google-api-python-client>=2.126.0
+supabase>=2.4.0
+boto3>=1.34.0
+requests>=2.31.0
+pytest>=8.0.0
+pytest-mock>=3.14.0
+# MetaTrader5 is Windows-only; install separately on your live trading machine:
+# MetaTrader5>=5.0.45
